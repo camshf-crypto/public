@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 'use client'
 import { useState, useEffect } from 'react'
 
@@ -918,4 +918,3 @@ export default function AdminPage() {
     </div>
   )
 }
->>>>>>> e4f3418bf44a57a42ed3720fe7fd9a60da12fefa
