@@ -1,14 +1,14 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@supabase/supabase-js'
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SECRET_KEY
-)
-
 export async function POST(request) {
   try {
+    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.SUPABASE_SECRET_KEY
+    )
+
     const { text, bookId, title, author, color } = await request.json()
     const pages = parseText(text, title, author, color)
     const freePages = pages.slice(0, 5)
@@ -33,7 +33,6 @@ function parseText(text, title, author, color) {
   const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0)
   const pages = []
   let pageNum = 1
-  let chapterNum = 0
   let currentSections = []
   let sectionCount = 0
   const MAX_SECTIONS = 5
