@@ -144,6 +144,12 @@ function LandingPage() {
   const S = { bg:'#f7f5f2', white:'#fff', surface:'#f0ede8', border:'#e2ddd8', accent:'#1a1a2e', accent2:'#c8963e', accent3:'#2563eb', text:'#1a1a1a', textMid:'#666', textFaint:'#aaa' }
 
   async function handleAuth() {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'signup_button_click', {
+        event_category: 'engagement',
+        event_label: isSignup ? '회원가입' : '로그인'
+      })
+    }
     setAuthLoading(true)
     setError('')
     try {
@@ -220,7 +226,7 @@ function LandingPage() {
             </button>
           </div>
           <div style={{ display:'flex', gap:32, justifyContent:'center', alignItems:'center' }}>
-            {[['30분','200페이지 완성'],['95%','비용 절감'],['10만원','책 한 권 완성']].map(([num,lbl],i) => (
+            {[['30분','100페이지 완성'],['95%','비용 절감'],['9900원','책 한 권 완성']].map(([num,lbl],i) => (
               <div key={i} style={{ display:'flex', alignItems:'center', gap:32 }}>
                 {i > 0 && <div style={{ width:1, height:32, background:S.border }}></div>}
                 <div style={{ textAlign:'center' }}>
