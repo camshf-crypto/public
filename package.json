@@ -11,10 +11,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.79.0",
     "@supabase/supabase-js": "^2.99.2",
-<<<<<<< HEAD
     "canvas": "^3.2.1",
-=======
->>>>>>> e4f3418bf44a57a42ed3720fe7fd9a60da12fefa
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.1",
     "mammoth": "^1.12.0",
