@@ -215,7 +215,7 @@ function LandingPage() {
             AI 책 내지 디자인 플랫폼
           </div>
           <h1 className="hero-title" style={{ fontFamily:'Noto Serif KR,serif', fontSize:'clamp(40px,5.5vw,76px)', fontWeight:900, lineHeight:1.15, letterSpacing:'-0.03em', color:S.accent, marginBottom:22, wordBreak:'keep-all' }}>
-            워드 파일 하나로<br /><span style={{ color:S.accent2 }}>책 한 권</span>이 완성됩니다
+            워드 파일 하나로<br /><span style={{ color:S.accent2 }}>전자책</span>이 완성됩니다
           </h1>
           <p style={{ fontSize:17, color:S.textMid, lineHeight:1.85, fontWeight:300, marginBottom:44, wordBreak:'keep-all', maxWidth:540, margin:'0 auto 44px' }}>
             디자이너 없이, 30분 안에.<br />텍스트를 넣으면 AI가 레이아웃·폰트·여백을 자동으로 잡아줍니다.
