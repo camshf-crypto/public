@@ -144,6 +144,8 @@ function LandingPage() {
   const S = { bg:'#f7f5f2', white:'#fff', surface:'#f0ede8', border:'#e2ddd8', accent:'#1a1a2e', accent2:'#c8963e', accent3:'#2563eb', text:'#1a1a1a', textMid:'#666', textFaint:'#aaa' }
 
   async function handleAuth() {
+    alert('지금은 수요 조사 중입니다.\n저희 서비스를 이용해주셔서 감사합니다.\n출시 일정이 잡히면 인스타에서 뵙겠습니다 🙏')
+    return
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'signup_button_click', {
         event_category: 'engagement',
