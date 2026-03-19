@@ -1,7 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { getSupabase } from './lib/supabase'
-const supabase = getSupabase()
+import { supabase } from './lib/supabase'
 
 const GENRES = [
   { id:'essay', label:'에세이', icon:'✍️', desc:'일상·감성·생각' },
