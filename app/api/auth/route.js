@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
@@ -45,7 +44,6 @@ export async function POST(request) {
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 })
   }
-=======
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
@@ -92,5 +90,4 @@ export async function POST(request) {
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 })
   }
->>>>>>> e4f3418bf44a57a42ed3720fe7fd9a60da12fefa
 }
