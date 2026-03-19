@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@supabase/supabase-js'
 
@@ -149,7 +149,6 @@ function parseText(text, title, author, color) {
   flushPage()
 
   return pages
-=======
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@supabase/supabase-js'
 
@@ -300,5 +299,4 @@ function parseText(text, title, author, color) {
   flushPage()
 
   return pages
->>>>>>> e4f3418bf44a57a42ed3720fe7fd9a60da12fefa
 }
