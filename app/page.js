@@ -144,15 +144,14 @@ function LandingPage() {
   const S = { bg:'#f7f5f2', white:'#fff', surface:'#f0ede8', border:'#e2ddd8', accent:'#1a1a2e', accent2:'#c8963e', accent3:'#2563eb', text:'#1a1a1a', textMid:'#666', textFaint:'#aaa' }
 
   async function handleAuth() {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'signup_button_click', {
-      event_category: 'engagement',
-      event_label: isSignup ? '회원가입' : '로그인'
-    })
-  }
-  alert('지금은 수요 조사 중입니다.\n저희 서비스를 이용해주셔서 감사합니다.\n출시 일정이 잡히면 인스타에서 뵙겠습니다 🙏')
-  return
-  setAuthLoading(true)   
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'signup_button_click', {
+        event_category: 'engagement',
+        event_label: isSignup ? '회원가입 시작하기' : '로그인'
+      })
+    }
+    alert('지금은 수요 조사 중입니다.\n저희 서비스를 이용해주셔서 감사합니다.\n출시 일정이 잡히면 인스타에서 뵙겠습니다 🙏')
+    return
     setAuthLoading(true)
     setError('')
     try {
@@ -251,62 +250,220 @@ function LandingPage() {
           </div>
         </div>
 
-        <div style={{ background:'#e8e4df', padding:'64px 24px', overflow:'hidden' }}>
-          <div style={{ textAlign:'center', marginBottom:12 }}>
-            <div style={{ fontSize:11, fontWeight:700, letterSpacing:'0.2em', color:'#888', textTransform:'uppercase', marginBottom:8 }}>BEFORE / AFTER</div>
-            <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:22, fontWeight:900, color:'#1a1a2e', marginBottom:4 }}>워드 파일 그대로 올리면</div>
-            <div style={{ fontSize:14, color:'#666' }}>AI가 전문 디자인으로 완성해드려요</div>
+        <div style={{ background:'#e8e4df', padding:'72px 24px 80px', overflow:'hidden' }}>
+          <div style={{ textAlign:'center', marginBottom:52 }}>
+            <div style={{ fontSize:11, fontWeight:700, letterSpacing:'0.2em', color:'#888', textTransform:'uppercase', marginBottom:10 }}>SAMPLE</div>
+            <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:26, fontWeight:900, color:'#1a1a2e', marginBottom:8 }}>이런 스타일로 완성됩니다</div>
+            <div style={{ fontSize:14, color:'#666' }}>실제 원고로 만든 샘플입니다. 워드 파일을 올리면 자동으로 이렇게 디자인됩니다.</div>
           </div>
-          <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:32, flexWrap:'wrap', marginTop:40 }}>
 
-            {/* 왼쪽: 워드 */}
-            <div>
-              <div style={{ width:280, background:'#fff', border:'1px solid #ddd', borderRadius:4, padding:'32px 26px', boxShadow:'2px 4px 12px rgba(0,0,0,0.1)' }}>
-                <div style={{ fontSize:14, color:'#111', fontFamily:'Noto Sans KR,sans-serif', lineHeight:2.2, wordBreak:'keep-all' }}>
-                  CHAPTER 01<br/>
-                  작은 것이 쌓이면<br/>
-                  <br/>
-                  매일 1%씩 나아지면 1년 후 37배가 된다. 습관은 복리로 작동한다.<br/>
-                  <br/>
-                  "성공은 매일의 작은 노력이 쌓인 결과다. 드라마틱한 변화는 없다."<br/>
-                  <br/>
-                  문제는 습관의 효과가 즉각적으로 나타나지 않는다는 점이다.
-                </div>
-              </div>
-              <div style={{ textAlign:'center', fontSize:11, color:'#999', marginTop:10, fontWeight:600 }}>워드 파일</div>
-            </div>
+          <div style={{ maxWidth:1100, margin:'0 auto' }}>
 
-            {/* 화살표 */}
-            <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:8 }}>
-              <div style={{ fontSize:11, color:'#888', marginBottom:4 }}>AI 자동 디자인</div>
-              <div style={{ display:'flex', alignItems:'center', gap:0 }}>
-                <div style={{ width:56, height:2, background:'linear-gradient(to right,#bbb,#c8963e)' }}></div>
-                <div style={{ color:'#c8963e', fontSize:16, marginLeft:-1 }}>▶</div>
-              </div>
-              <div style={{ fontSize:12, color:'#c8963e', fontWeight:700 }}>9,900원</div>
-            </div>
+            {/* 상단: 워드 원본 + 화살표 + 챕터 완성본 */}
+            <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'center', gap:24, marginBottom:40, flexWrap:'wrap' }}>
 
-            {/* 오른쪽: 북메이커 결과물 */}
-            <div>
-              <div style={{ width:280, background:'#faf8f5', borderRadius:'3px 12px 12px 3px', boxShadow:'6px 0 24px rgba(0,0,0,0.15)', overflow:'hidden', position:'relative' }}>
-                <div style={{ position:'absolute', left:0, top:0, bottom:0, width:4, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:2 }}></div>
-                <div style={{ height:148, background:'#2563eb', position:'relative', overflow:'hidden' }}>
-                  <div style={{ position:'absolute', bottom:-1, left:0, right:0, height:24, background:'#faf8f5', clipPath:'ellipse(55% 100% at 50% 100%)' }}></div>
-                  <div style={{ position:'absolute', top:18, left:28, fontSize:9, fontWeight:700, letterSpacing:'0.2em', color:'#c8963e', fontFamily:'Noto Sans KR,sans-serif' }}>CHAPTER 01</div>
-                  <div style={{ position:'absolute', top:36, left:28, right:20, fontFamily:'Noto Serif KR,serif', fontSize:22, fontWeight:900, color:'#fff', lineHeight:1.3 }}>작은 것이<br/>쌓이면</div>
-                </div>
-                <div style={{ padding:'16px 20px 12px 28px' }}>
-                  <p style={{ fontSize:13, lineHeight:2.1, color:'#444', marginBottom:8, wordBreak:'keep-all', fontFamily:'Noto Serif KR,serif' }}>매일 1%씩 나아지면 1년 후 37배가 된다. 습관은 복리로 작동한다.</p>
-                  <div style={{ borderLeft:'3px solid #2563eb', background:'rgba(37,99,235,0.06)', padding:'8px 12px', borderRadius:'0 4px 4px 0', marginBottom:8 }}>
-                    <p style={{ fontSize:12, lineHeight:1.9, color:'#333', fontStyle:'italic', margin:0 }}>"성공은 매일의 작은 노력이 쌓인 결과다. 드라마틱한 변화는 없다."</p>
+              {/* 워드 원본 */}
+              <div style={{ textAlign:'center' }}>
+                <div style={{ width:240, background:'#fff', border:'1px solid #ddd', borderRadius:4, padding:'20px 16px 16px', boxShadow:'2px 4px 12px rgba(0,0,0,0.1)', textAlign:'left' }}>
+                  <div style={{ fontSize:7.5, color:'#111', fontFamily:'Noto Sans KR,sans-serif', lineHeight:1.7, wordBreak:'keep-all' }}>
+                    <div style={{ fontWeight:700, marginBottom:2, fontSize:8 }}>CHAPTER 01</div>
+                    <div style={{ fontWeight:700, marginBottom:8, fontSize:8 }}>작은 것이 쌓이면</div>
+                    매일 아침 6시에 일어나는 것과 7시에 일어나는 것의 차이는 단 1시간이다. 하루로 보면 미미하다. 하지만 1년이 지나면 365시간, 약 15일의 차이가 생긴다. 그 15일 동안 누군가는 책 한 권을 읽고, 운동을 하고, 새로운 언어를 배운다.<br/><br/>
+                    습관은 복리로 작동한다. 매일 1%씩 나아지면 1년 후에는 37배가 된다. 반대로 매일 1%씩 나빠지면 거의 0에 수렴한다.<br/><br/>
+                    <div style={{ fontWeight:700, marginBottom:2 }}>잠재력의 고원</div>
+                    문제는 이 효과가 즉각적으로 나타나지 않는다는 점이다. 씨앗을 심고 물을 주지만 처음 몇 달 동안은 아무것도 자라지 않는 것처럼 보인다.<br/><br/>
+                    대나무는 심은 후 5년 동안 거의 자라지 않는다. 하지만 5년이 지난 어느 날, 단 6주 만에 27미터까지 자란다.<br/><br/>
+                    "성공은 매일의 작은 노력이 쌓인 결과다. 드라마틱한 변화는 없다. 그저 꾸준함만 있을 뿐이다."<br/><br/>
+                    <div style={{ fontWeight:700, marginBottom:2 }}>왜 우리는 작은 변화를 무시하는가</div>
+                    인간의 뇌는 즉각적인 보상에 반응하도록 설계되어 있다. 오늘 운동 한 번으로는 몸이 달라지지 않는다. 그래서 우리는 포기한다.<br/><br/>
+                    하지만 매일 30분씩 1년을 운동한 사람과 그렇지 않은 사람의 차이는 어마어마하다. 복리는 시간이 지날수록 그 차이를 기하급수적으로 벌려놓는다.
                   </div>
-                  <p style={{ fontSize:13, lineHeight:2.1, color:'#444', fontFamily:'Noto Serif KR,serif' }}>문제는 습관의 효과가 즉각적으로 나타나지 않는다는 점이다.</p>
                 </div>
-                <div style={{ padding:'6px 20px 12px 28px', borderTop:'0.5px solid #e0ddd8', display:'flex', justifyContent:'space-between', fontSize:9, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>
-                  <span>12</span><span>1%의 습관이 삶을 바꾼다</span>
-                </div>
+                <div style={{ fontSize:11, color:'#999', marginTop:10, fontWeight:600 }}>📄 워드 원본</div>
               </div>
-              <div style={{ textAlign:'center', fontSize:11, color:'#c8963e', marginTop:10, fontWeight:700 }}>북메이커 완성본</div>
+
+              {/* 화살표 */}
+              <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6, paddingTop:80 }}>
+                <div style={{ fontSize:11, color:'#888' }}>AI 자동 디자인</div>
+                <div style={{ display:'flex', alignItems:'center' }}>
+                  <div style={{ width:40, height:2, background:'linear-gradient(to right,#bbb,#c8963e)' }}></div>
+                  <div style={{ color:'#c8963e', fontSize:14 }}>▶</div>
+                </div>
+                <div style={{ fontSize:12, color:'#c8963e', fontWeight:700 }}>9,900원</div>
+              </div>
+
+              {/* 챕터 완성본 */}
+              <div style={{ textAlign:'center' }}>
+                <div style={{ width:360, background:'#faf8f5', borderRadius:'3px 16px 16px 3px', boxShadow:'8px 0 32px rgba(0,0,0,0.18)', overflow:'hidden', position:'relative' }}>
+                  <div style={{ position:'absolute', left:0, top:0, bottom:0, width:5, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:2 }}></div>
+                  <div style={{ height:130, background:'#2563eb', position:'relative', overflow:'hidden' }}>
+                    <div style={{ position:'absolute', bottom:-1, left:0, right:0, height:24, background:'#faf8f5', clipPath:'ellipse(55% 100% at 50% 100%)' }}></div>
+                    <div style={{ position:'absolute', top:16, left:26, fontSize:8, fontWeight:700, letterSpacing:'0.2em', color:'#c8963e', fontFamily:'Noto Sans KR,sans-serif' }}>CHAPTER 01</div>
+                    <div style={{ position:'absolute', top:30, left:26, right:16, fontFamily:'Noto Serif KR,serif', fontSize:20, fontWeight:900, color:'#fff', lineHeight:1.3 }}>작은 것이<br/>쌓이면</div>
+                  </div>
+                  <div style={{ padding:'14px 16px 10px 24px' }}>
+                    <p style={{ fontSize:8, lineHeight:1.85, color:'#444', marginBottom:7, wordBreak:'keep-all', fontFamily:'Noto Serif KR,serif', textAlign:'left' }}>매일 아침 6시에 일어나는 것과 7시에 일어나는 것의 차이는 단 1시간이다. 하루로 보면 미미하다. 하지만 1년이 지나면 365시간, 약 15일의 차이가 생긴다. 그 15일 동안 누군가는 책 한 권을 읽고, 운동을 하고, 새로운 언어를 배운다.</p>
+                    <p style={{ fontSize:8, lineHeight:1.85, color:'#444', marginBottom:7, wordBreak:'keep-all', fontFamily:'Noto Serif KR,serif', textAlign:'left' }}>습관은 복리로 작동한다. 매일 1%씩 나아지면 1년 후에는 37배가 된다. 반대로 매일 1%씩 나빠지면 거의 0에 수렴한다.</p>
+                    <div style={{ fontSize:8.5, fontWeight:700, color:'#111', marginBottom:7, fontFamily:'Noto Serif KR,serif', textAlign:'left' }}>잠재력의 고원</div>
+                    <p style={{ fontSize:8, lineHeight:1.85, color:'#444', marginBottom:7, wordBreak:'keep-all', fontFamily:'Noto Serif KR,serif', textAlign:'left' }}>문제는 이 효과가 즉각적으로 나타나지 않는다는 점이다. 씨앗을 심고 물을 주지만 처음 몇 달 동안은 아무것도 자라지 않는 것처럼 보인다.</p>
+                    <p style={{ fontSize:8, lineHeight:1.85, color:'#444', marginBottom:7, wordBreak:'keep-all', fontFamily:'Noto Serif KR,serif', textAlign:'left' }}>대나무는 심은 후 5년 동안 거의 자라지 않는다. 하지만 5년이 지난 어느 날, 단 6주 만에 27미터까지 자란다.</p>
+                    <div style={{ borderLeft:'3px solid #2563eb', background:'rgba(37,99,235,0.06)', padding:'6px 10px', borderRadius:'0 4px 4px 0', marginBottom:7 }}>
+                      <p style={{ fontSize:7.5, lineHeight:1.8, color:'#333', fontStyle:'italic', margin:0, textAlign:'left' }}>"성공은 매일의 작은 노력이 쌓인 결과다. 드라마틱한 변화는 없다. 그저 꾸준함만 있을 뿐이다."</p>
+                    </div>
+                    <div style={{ fontSize:8.5, fontWeight:700, color:'#111', marginBottom:7, fontFamily:'Noto Serif KR,serif', textAlign:'left' }}>왜 우리는 작은 변화를 무시하는가</div>
+                    <p style={{ fontSize:8, lineHeight:1.85, color:'#444', marginBottom:7, wordBreak:'keep-all', fontFamily:'Noto Serif KR,serif', textAlign:'left' }}>인간의 뇌는 즉각적인 보상에 반응하도록 설계되어 있다. 오늘 운동 한 번으로는 몸이 달라지지 않는다. 그래서 우리는 포기한다.</p>
+                    <p style={{ fontSize:8, lineHeight:1.85, color:'#444', wordBreak:'keep-all', fontFamily:'Noto Serif KR,serif', textAlign:'left' }}>하지만 매일 30분씩 1년을 운동한 사람과 그렇지 않은 사람의 차이는 어마어마하다. 복리는 시간이 지날수록 그 차이를 기하급수적으로 벌려놓는다.</p>
+                  </div>
+                  <div style={{ padding:'5px 16px 10px 24px', borderTop:'0.5px solid #e0ddd8', display:'flex', justifyContent:'space-between', fontSize:8, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>
+                    <span>12</span><span>1%의 습관이 삶을 바꾼다</span>
+                  </div>
+                </div>
+                <div style={{ fontSize:11, color:'#c8963e', marginTop:10, fontWeight:700 }}>✨ AI 내지 디자인 완성본</div>
+              </div>
+            </div>
+
+            {/* 하단: 목차 + 요약본 + 그래프 */}
+            <div style={{ marginBottom:16, textAlign:'center', fontSize:12, color:'#888', fontWeight:600 }}>같은 원고로 자동 생성되는 다른 페이지들</div>
+            <div style={{ display:'flex', gap:20, justifyContent:'center', flexWrap:'wrap', marginBottom:40 }}>
+
+              {/* 목차 */}
+              <div style={{ textAlign:'center' }}>
+                <div style={{ width:220, background:'#faf8f5', borderRadius:'3px 16px 16px 3px', boxShadow:'8px 0 32px rgba(0,0,0,0.15)', overflow:'hidden', position:'relative', display:'flex', flexDirection:'column' }}>
+                  <div style={{ position:'absolute', left:0, top:0, bottom:0, width:5, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:2 }}></div>
+                  <div style={{ padding:'22px 16px 16px 24px', flex:1 }}>
+                    <div style={{ fontSize:7.5, fontWeight:700, letterSpacing:'0.2em', color:'#c8963e', marginBottom:10, fontFamily:'Noto Sans KR,sans-serif' }}>CONTENTS</div>
+                    <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:16, fontWeight:900, color:'#111', marginBottom:4 }}>목차</div>
+                    <div style={{ height:2, background:'#2563eb', width:28, marginBottom:16, opacity:0.4 }}></div>
+                    {[
+                      ['CH 01','작은 것이 쌓이면','12'],
+                      ['CH 02','복리의 법칙','38'],
+                      ['CH 03','환경이 습관을 만든다','64'],
+                      ['CH 04','나쁜 습관 끊는 법','92'],
+                      ['CH 05','정체성이 먼저다','118'],
+                    ].map(([ch,nm,pg],i) => (
+                      <div key={i} style={{ display:'flex', alignItems:'baseline', gap:6, marginBottom:12 }}>
+                        <span style={{ fontSize:8, fontWeight:700, color:'#2563eb', width:28, flexShrink:0, fontFamily:'Noto Sans KR,sans-serif' }}>{ch}</span>
+                        <span style={{ fontSize:10, color:'#222', flex:1, fontFamily:'Noto Serif KR,serif' }}>{nm}</span>
+                        <div style={{ flex:1, borderBottom:'1px dotted #ddd', margin:'0 6px 3px' }}></div>
+                        <span style={{ fontSize:9, color:'#aaa' }}>{pg}</span>
+                      </div>
+                    ))}
+                    <div style={{ marginTop:16, padding:'12px', background:'rgba(37,99,235,0.04)', borderRadius:8, border:'1px solid rgba(37,99,235,0.1)' }}>
+                      <div style={{ fontSize:8.5, fontWeight:700, color:'#2563eb', marginBottom:6, fontFamily:'Noto Sans KR,sans-serif' }}>이 책에 대하여</div>
+                      <div style={{ fontSize:8.5, lineHeight:1.75, color:'#555', fontFamily:'Noto Serif KR,serif' }}>매일 1%의 변화가 쌓여 37배의 성장을 만드는 복리의 법칙을 담았습니다.</div>
+                    </div>
+                  </div>
+                  <div style={{ padding:'6px 16px 10px 24px', borderTop:'0.5px solid #e0ddd8', display:'flex', justifyContent:'space-between', fontSize:8, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>
+                    <span>4</span><span>1%의 습관이 삶을 바꾼다</span>
+                  </div>
+                </div>
+                <div style={{ fontSize:11, color:'#c8963e', marginTop:10, fontWeight:700 }}>📋 목차 페이지</div>
+              </div>
+
+              {/* 요약본 */}
+              <div style={{ textAlign:'center' }}>
+                <div style={{ width:220, background:'#faf8f5', borderRadius:'3px 16px 16px 3px', boxShadow:'8px 0 32px rgba(0,0,0,0.15)', overflow:'hidden', position:'relative', display:'flex', flexDirection:'column' }}>
+                  <div style={{ position:'absolute', left:0, top:0, bottom:0, width:5, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:2 }}></div>
+                  <div style={{ padding:'18px 16px 12px 24px', flex:1 }}>
+                    <div style={{ display:'flex', justifyContent:'space-between', paddingBottom:8, borderBottom:'0.5px solid #e0ddd8', marginBottom:12, fontSize:8, color:'#bbb' }}>
+                      <span>1%의 습관이 삶을 바꾼다</span>
+                      <div style={{ width:5, height:5, borderRadius:'50%', background:'#2563eb' }}></div>
+                    </div>
+                    <div style={{ fontSize:10, fontWeight:700, color:'#111', paddingLeft:8, borderLeft:'3px solid #2563eb', marginBottom:10, fontFamily:'Noto Serif KR,serif' }}>왜 우리는 작은 변화를 무시하는가</div>
+                    <p style={{ fontSize:8.5, lineHeight:1.8, color:'#444', marginBottom:10, fontFamily:'Noto Serif KR,serif', wordBreak:'keep-all' }}>인간의 뇌는 즉각적인 보상에 반응하도록 설계되어 있다. 오늘 운동 한 번으로는 몸이 달라지지 않는다. 그래서 우리는 포기한다.</p>
+                    <p style={{ fontSize:8.5, lineHeight:1.8, color:'#444', marginBottom:10, fontFamily:'Noto Serif KR,serif', wordBreak:'keep-all' }}>하지만 매일 30분씩 1년을 운동한 사람과 그렇지 않은 사람의 차이는 어마어마하다. 복리는 시간이 지날수록 그 차이를 벌려놓는다.</p>
+                    <div style={{ background:'rgba(37,99,235,0.06)', border:'1px solid rgba(37,99,235,0.15)', borderRadius:6, padding:'10px 12px', marginBottom:10 }}>
+                      <div style={{ fontSize:8.5, fontWeight:700, color:'#2563eb', marginBottom:7, fontFamily:'Noto Sans KR,sans-serif' }}>📌 핵심 요약</div>
+                      {[
+                        '매일 1% 개선으로 1년 후 37배 성장',
+                        '잠재력의 고원을 견뎌야 복리가 온다',
+                        '환경 설계가 의지력보다 훨씬 강하다',
+                        '정체성 기반 습관이 더 강력하다',
+                      ].map((t,i) => (
+                        <div key={i} style={{ display:'flex', alignItems:'flex-start', gap:5, marginBottom:5 }}>
+                          <div style={{ width:3, height:3, borderRadius:'50%', background:'#2563eb', flexShrink:0, marginTop:4 }}></div>
+                          <span style={{ fontSize:8.5, color:'#333', fontFamily:'Noto Serif KR,serif', lineHeight:1.6 }}>{t}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ borderLeft:'3px solid #2563eb', background:'rgba(37,99,235,0.04)', padding:'7px 10px', borderRadius:'0 4px 4px 0' }}>
+                      <p style={{ fontSize:8, lineHeight:1.75, color:'#333', fontStyle:'italic', margin:0 }}>"오늘 1%를 나아가는 것에 집중하라."</p>
+                    </div>
+                  </div>
+                  <div style={{ padding:'6px 16px 10px 24px', borderTop:'0.5px solid #e0ddd8', display:'flex', justifyContent:'space-between', fontSize:8, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>
+                    <span>36</span><span>CH 02</span>
+                  </div>
+                </div>
+                <div style={{ fontSize:11, color:'#c8963e', marginTop:10, fontWeight:700 }}>📄 요약본 페이지</div>
+              </div>
+
+              {/* 그래프 */}
+              <div style={{ textAlign:'center' }}>
+                <div style={{ width:220, background:'#faf8f5', borderRadius:'3px 16px 16px 3px', boxShadow:'8px 0 32px rgba(0,0,0,0.15)', overflow:'hidden', position:'relative', display:'flex', flexDirection:'column' }}>
+                  <div style={{ position:'absolute', left:0, top:0, bottom:0, width:5, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:2 }}></div>
+                  <div style={{ padding:'18px 16px 12px 24px', flex:1 }}>
+                    <div style={{ display:'flex', justifyContent:'space-between', paddingBottom:8, borderBottom:'0.5px solid #e0ddd8', marginBottom:12, fontSize:8, color:'#bbb' }}>
+                      <span>1%의 습관이 삶을 바꾼다</span>
+                      <div style={{ width:5, height:5, borderRadius:'50%', background:'#2563eb' }}></div>
+                    </div>
+                    <div style={{ fontSize:10, fontWeight:700, color:'#111', paddingLeft:8, borderLeft:'3px solid #2563eb', marginBottom:12, fontFamily:'Noto Serif KR,serif' }}>복리의 마법: 1% 성장의 결과</div>
+                    <div style={{ marginBottom:10 }}>
+                      <div style={{ display:'flex', alignItems:'flex-end', gap:5, height:70, marginBottom:5 }}>
+                        {[
+                          { h:5, val:'1.1배' },
+                          { h:14, val:'1.3배' },
+                          { h:27, val:'6배' },
+                          { h:45, val:'14배' },
+                          { h:70, val:'37배' },
+                        ].map((b,i) => (
+                          <div key={i} style={{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:2 }}>
+                            <div style={{ fontSize:6.5, color:'#2563eb', fontWeight:700 }}>{b.val}</div>
+                            <div style={{ width:'100%', height:b.h, background:`rgba(37,99,235,${0.2+i*0.16})`, borderRadius:'2px 2px 0 0' }}></div>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ display:'flex', borderTop:'1px solid #e0ddd8', paddingTop:4 }}>
+                        {['1개월','3개월','6개월','9개월','1년'].map((l,i) => (
+                          <div key={i} style={{ flex:1, fontSize:6.5, color:'#aaa', textAlign:'center', fontFamily:'Noto Sans KR,sans-serif' }}>{l}</div>
+                        ))}
+                      </div>
+                    </div>
+                    <p style={{ fontSize:8.5, lineHeight:1.8, color:'#444', marginBottom:10, fontFamily:'Noto Serif KR,serif' }}>매일 1%씩 나아지면 1년 후 37배의 성장을 이룰 수 있다.</p>
+                    <div style={{ border:'1px solid #e0ddd8', borderRadius:6, overflow:'hidden', fontSize:8.5 }}>
+                      <div style={{ display:'flex', background:'#f0ede8', padding:'5px 8px', fontWeight:700, color:'#555', fontFamily:'Noto Sans KR,sans-serif' }}>
+                        <span style={{ flex:1 }}>기간</span>
+                        <span style={{ flex:1, textAlign:'center', color:'#2563eb' }}>+1%/일</span>
+                        <span style={{ flex:1, textAlign:'right', color:'#dc2626' }}>-1%/일</span>
+                      </div>
+                      {[['1개월','1.35배','0.74배'],['6개월','6배','0.16배'],['1년','37배','0.03배']].map(([p,up,dn],i) => (
+                        <div key={i} style={{ display:'flex', padding:'5px 8px', borderTop:'1px solid #f0ede8', fontFamily:'Noto Serif KR,serif' }}>
+                          <span style={{ flex:1, color:'#666' }}>{p}</span>
+                          <span style={{ flex:1, textAlign:'center', color:'#2563eb', fontWeight:700 }}>{up}</span>
+                          <span style={{ flex:1, textAlign:'right', color:'#dc2626' }}>{dn}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ padding:'6px 16px 10px 24px', borderTop:'0.5px solid #e0ddd8', display:'flex', justifyContent:'space-between', fontSize:8, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>
+                    <span>48</span><span>CH 03</span>
+                  </div>
+                </div>
+                <div style={{ fontSize:11, color:'#c8963e', marginTop:10, fontWeight:700 }}>📊 그래프 페이지</div>
+              </div>
+
+            </div>
+
+            {/* 하단 버튼 */}
+            <div style={{ textAlign:'center' }}>
+              <button onClick={() => {
+                if (typeof window !== 'undefined' && window.gtag) {
+                  window.gtag('event', 'sample_cta_click', { event_category:'engagement', event_label:'이 스타일로 전체 적용하기' })
+                }
+                setShowLogin(true)
+              }} style={{ padding:'15px 48px', background:'#1a1a2e', color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+                내 원고로 시작하기 →
+              </button>
+              <div style={{ fontSize:11, color:'#999', marginTop:10 }}>무료로 시작 · 카드 정보 불필요</div>
             </div>
 
           </div>
@@ -360,14 +517,11 @@ function LandingPage() {
         </h2>
         <p style={{ fontSize:15, color:S.textMid, marginBottom:32, fontWeight:300 }}>회원가입 후 바로 사용해보세요. 카드 정보 불필요.</p>
         <button onClick={() => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'start_button_click', {
-      event_category: 'engagement',
-      event_label: '무료로 시작하기'
-    })
-  }
-  setShowLogin(true)
-}} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+          if (typeof window !== 'undefined' && window.gtag) {
+            window.gtag('event', 'cta_button_click', { event_category:'engagement', event_label:'하단 무료로 시작하기' })
+          }
+          setShowLogin(true)
+        }} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
           무료로 시작하기 →
         </button>
       </div>
@@ -417,6 +571,8 @@ function LandingPage() {
 function AppPage({ user }) {
   const [step, setStep] = useState(0)
   const [file, setFile] = useState(null)
+  const [tocFile, setTocFile] = useState(null)
+  const [tocText, setTocText] = useState('')
   const [rawText, setRawText] = useState('')
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
@@ -436,7 +592,8 @@ function AppPage({ user }) {
   const [showImageUpload, setShowImageUpload] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [imagePageIdx, setImagePageIdx] = useState(null)
-  const [proofResult, setProofResult] = useState(null) // 교정 결과
+  const [proofResult, setProofResult] = useState(null)
+  const [isPaid, setIsPaid] = useState(false) // 결제 완료 여부
 
   const S = { bg:'#f7f5f2', white:'#fff', surface:'#f0ede8', border:'#e2ddd8', accent:'#1a1a2e', accent2:'#c8963e', accent3:'#2563eb', text:'#1a1a1a', textMid:'#666', textFaint:'#aaa' }
   const colors = ['#2563eb','#1a1a2e','#c8963e','#16a34a','#dc2626','#7c3aed','#0891b2','#be185d']
@@ -470,6 +627,21 @@ function AppPage({ user }) {
     }
   }
 
+  async function handleTocFile(e) {
+    const f = e.target.files[0]
+    if (!f) return
+    setTocFile(f)
+    if (f.name.endsWith('.docx')) {
+      const mammoth = (await import('mammoth')).default
+      const arrayBuffer = await f.arrayBuffer()
+      const result = await mammoth.extractRawText({ arrayBuffer })
+      setTocText(result.value)
+    } else {
+      const text = await f.text()
+      setTocText(text)
+    }
+  }
+
   function handleRefImage(e) {
     const f = e.target.files[0]
     if (!f) return
@@ -482,6 +654,7 @@ function AppPage({ user }) {
     if (isRegen && regenCount <= 0) return
     setLoading(true)
     try {
+      throw new Error('API 미연동')
       const res = await fetch('/api/generate', {
         method:'POST',
         headers:{'Content-Type':'application/json'},
@@ -493,7 +666,20 @@ function AppPage({ user }) {
       if (isRegen) setRegenCount(prev => prev - 1)
       setStep(STEP_1PAGE)
     } catch (err) {
-      alert(err.message)
+      // API 없을 때 샘플 1페이지로 대체
+      const samplePage = {
+        type: 'body', rh: title || '내 책',
+        sections: [
+          { t:'sec', c: rawText ? rawText.split('\n').find(l=>l.trim().length>2)?.slice(0,20) || '첫 번째 챕터' : '첫 번째 챕터' },
+          { t:'txt', c: rawText ? rawText.slice(0, 120) + '...' : '업로드한 원고 내용이 이 형태로 디자인됩니다. 챕터, 소제목, 본문이 자동으로 구분되어 레이아웃이 적용됩니다.' },
+          { t:'quote', c: '"텍스트를 넣으면 AI가 레이아웃·폰트·여백을 자동으로 잡아줍니다."' },
+          { t:'txt', c: rawText ? rawText.slice(120, 240) + '...' : '폰트, 여백, 색상까지 한 번에 자동으로 설정됩니다. 디자이너 없이도 전문가 수준의 내지를 완성할 수 있습니다.' },
+        ],
+        pn: '12', ct: 'CH 01'
+      }
+      setPreviewPage(samplePage)
+      if (isRegen) setRegenCount(prev => prev - 1)
+      setStep(STEP_1PAGE)
     }
     setLoading(false)
   }
@@ -545,7 +731,59 @@ function AppPage({ user }) {
       setAllPages(data.pages)
       setStep(STEP_ALL)
     } catch (err) {
-      alert(err.message)
+      // API 없을 때 샘플 페이지로 대체
+      const samplePages = [
+        {
+          type: 'chapter',
+          num: 'CHAPTER 01',
+          title: title || '작은 것이 쌓이면',
+          body: ['매일 1%씩 나아지면 1년 후 37배가 된다. 습관은 복리로 작동한다. 반대로 매일 1%씩 나빠지면 거의 0에 수렴한다.', '"성공은 매일의 작은 노력이 쌓인 결과다. 드라마틱한 변화는 없다. 그저 꾸준함만 있을 뿐이다."', '문제는 습관의 효과가 즉각적으로 나타나지 않는다는 점이다. 처음 며칠, 몇 주 동안은 변화가 없는 것처럼 보인다.'],
+          pn: '12', bookTitle: title || '1%의 습관'
+        },
+        {
+          type: 'toc',
+          rh: title || '목차',
+          sections: [
+            { t:'toc-title', c:'목차' },
+            { t:'toc-item', ch:'CH 01', name: title ? title.slice(0,12) : '작은 것이 쌓이면', pg:'12' },
+            { t:'toc-item', ch:'CH 02', name:'복리의 법칙', pg:'38' },
+            { t:'toc-item', ch:'CH 03', name:'환경이 습관을 만든다', pg:'64' },
+            { t:'toc-item', ch:'CH 04', name:'나쁜 습관 끊는 법', pg:'92' },
+            { t:'toc-item', ch:'CH 05', name:'정체성이 먼저다', pg:'118' },
+          ],
+          pn: '4', ct: '목차'
+        },
+        {
+          type: 'body', rh: title || '1%의 습관',
+          sections: [
+            { t:'sec', c:'잠재력의 고원' },
+            { t:'txt', c:'씨앗을 심고 물을 주지만 아무것도 자라지 않는 것처럼 느껴지는 시기. 하지만 땅 아래에서는 뿌리가 깊어지고 있다.' },
+            { t:'quote', c:'"땅 아래에서 뿌리가 깊어지고 있다. 어느 순간 갑자기 싹이 튼다."' },
+            { t:'txt', c:'이 구간을 견디는 사람만이 복리의 혜택을 누릴 수 있다. 대부분은 이 구간에서 포기한다.' },
+          ],
+          pn: '24', ct: 'CH 01'
+        },
+        {
+          type: 'body', rh: title || '1%의 습관',
+          sections: [
+            { t:'sec', c:'복리의 법칙' },
+            { t:'txt', c:'아인슈타인은 복리를 세계 8번째 불가사의라고 불렀다. 이 원리는 돈에만 적용되는 게 아니다.' },
+            { t:'txt', c:'습관, 지식, 관계 모든 것에 복리가 작동한다. 매일 조금씩 쌓이는 것들이 어느 순간 폭발적으로 성장한다.' },
+          ],
+          pn: '38', ct: 'CH 02'
+        },
+        {
+          type: 'body', rh: title || '1%의 습관',
+          sections: [
+            { t:'sec', c:'환경이 습관을 만든다' },
+            { t:'txt', c:'의지력만으로는 습관을 바꾸기 어렵다. 환경을 바꾸면 행동이 자연스럽게 따라온다.' },
+            { t:'quote', c:'"환경을 설계하는 것이 의지력보다 강하다."' },
+          ],
+          pn: '64', ct: 'CH 03'
+        },
+      ]
+      setAllPages(samplePages)
+      setStep(STEP_ALL)
     }
     setLoading(false)
   }
@@ -580,15 +818,14 @@ function AppPage({ user }) {
               {i > 0 && <span style={{ color:S.border, fontSize:12, margin:'0 2px' }}>›</span>}
               <div
                 onClick={()=>{
-                  if (step === STEP_ALL) return
                   if (i === 0 && step > 0) setStep(0)
                   else if (i === 1 && step > 1) setStep(1)
                   else if (proofread && i === 2 && step > 2) setStep(STEP_PROOF)
                   else if (i === (proofread?3:2) && step > STEP_1PAGE && previewPage) setStep(STEP_1PAGE)
                 }}
-                style={{ display:'flex', alignItems:'center', gap:5, padding:'4px 10px', borderRadius:6, background:step===i?'rgba(37,99,235,0.08)':'transparent', cursor:(i < step && step < STEP_ALL) ? 'pointer' : 'default', transition:'all 0.15s' }}
-                onMouseOver={e=>{ if(i < step && step < STEP_ALL) e.currentTarget.style.background='rgba(0,0,0,0.04)' }}
-                onMouseOut={e=>{ if(i < step && step < STEP_ALL) e.currentTarget.style.background=step===i?'rgba(37,99,235,0.08)':'transparent' }}
+                style={{ display:'flex', alignItems:'center', gap:5, padding:'4px 10px', borderRadius:6, background:step===i?'rgba(37,99,235,0.08)':'transparent', cursor:(i < step) ? 'pointer' : 'default', transition:'all 0.15s' }}
+                onMouseOver={e=>{ if(i < step) e.currentTarget.style.background='rgba(0,0,0,0.04)' }}
+                onMouseOut={e=>{ if(i < step) e.currentTarget.style.background=step===i?'rgba(37,99,235,0.08)':'transparent' }}
               >
                 <div style={{ width:18, height:18, borderRadius:'50%', background:step>i?S.accent2:step===i?S.accent3:S.surface, color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontSize:9, fontWeight:700 }}>
                   {step > i ? '✓' : i+1}
@@ -621,14 +858,26 @@ function AppPage({ user }) {
           <div>
             <h2 style={{ fontFamily:'Noto Serif KR,serif', fontSize:28, fontWeight:900, color:S.accent, marginBottom:8 }}>원고를 업로드하세요</h2>
             <p style={{ fontSize:14, color:S.textMid, marginBottom:32 }}>워드 파일을 올리면 AI가 자동으로 책 내지를 만들어드려요.</p>
-            <label style={{ display:'block', border:`2px dashed ${S.border}`, borderRadius:16, padding:'48px 20px', textAlign:'center', cursor:'pointer', background:S.white, marginBottom:24 }}>
+
+            {/* 원고 파일 */}
+            <div style={{ fontSize:12, fontWeight:700, color:S.textMid, marginBottom:8 }}>📄 원고 파일 <span style={{ color:'#dc2626' }}>*</span></div>
+            <label style={{ display:'block', border:`2px dashed ${file?S.accent3:S.border}`, borderRadius:16, padding:'32px 20px', textAlign:'center', cursor:'pointer', background:S.white, marginBottom:20, transition:'all 0.2s' }}>
               <input type="file" accept=".docx,.txt" onChange={handleFile} style={{ display:'none' }} />
-              <div style={{ fontSize:40, marginBottom:12 }}>📄</div>
-              <div style={{ fontSize:15, fontWeight:700, color:S.accent2, marginBottom:6 }}>파일 선택하기</div>
-              <div style={{ fontSize:13, color:S.textMid }}>클릭하거나 드래그해서 올려보세요</div>
-              <div style={{ fontSize:11, color:S.textFaint, marginTop:6 }}>.docx · .txt 지원</div>
-              {file && <div style={{ marginTop:12, fontSize:13, fontWeight:700, color:S.accent }}>✅ {file.name}</div>}
+              <div style={{ fontSize:32, marginBottom:8 }}>📄</div>
+              <div style={{ fontSize:14, fontWeight:700, color:file?S.accent3:S.accent2, marginBottom:4 }}>{file ? `✅ ${file.name}` : '파일 선택하기'}</div>
+              <div style={{ fontSize:12, color:S.textFaint }}>.docx · .txt 지원</div>
             </label>
+
+            {/* 목차 파일 */}
+            <div style={{ fontSize:12, fontWeight:700, color:S.textMid, marginBottom:8 }}>📋 목차 파일 <span style={{ color:'#dc2626' }}>*</span></div>
+            <label style={{ display:'block', border:`2px dashed ${tocFile?S.accent3:S.border}`, borderRadius:16, padding:'32px 20px', textAlign:'center', cursor:'pointer', background:S.white, marginBottom:8, transition:'all 0.2s' }}>
+              <input type="file" accept=".docx,.txt" onChange={handleTocFile} style={{ display:'none' }} />
+              <div style={{ fontSize:32, marginBottom:8 }}>📋</div>
+              <div style={{ fontSize:14, fontWeight:700, color:tocFile?S.accent3:S.accent2, marginBottom:4 }}>{tocFile ? `✅ ${tocFile.name}` : '목차 파일 선택하기'}</div>
+              <div style={{ fontSize:12, color:S.textFaint }}>.docx · .txt 지원</div>
+            </label>
+            <div style={{ fontSize:11, color:S.textFaint, marginBottom:24, paddingLeft:4 }}>💡 목차 파일을 올리면 전체 미리보기에서 목차 페이지가 자동으로 생성돼요</div>
+
             <div style={{ marginBottom:16 }}>
               <label style={{ fontSize:12, fontWeight:600, color:S.textMid, display:'block', marginBottom:7 }}>책 제목</label>
               <input value={title} onChange={e=>setTitle(e.target.value)} placeholder="제목 입력" style={{ width:'100%', background:S.white, border:`1.5px solid ${S.border}`, borderRadius:10, padding:'12px 14px', fontSize:14, fontFamily:'Noto Sans KR,sans-serif', outline:'none', boxSizing:'border-box' }} />
@@ -638,7 +887,8 @@ function AppPage({ user }) {
               <input value={author} onChange={e=>setAuthor(e.target.value)} placeholder="홍길동" style={{ width:'100%', background:S.white, border:`1.5px solid ${S.border}`, borderRadius:10, padding:'12px 14px', fontSize:14, fontFamily:'Noto Sans KR,sans-serif', outline:'none', boxSizing:'border-box' }} />
             </div>
             <button onClick={()=>{
-              if (!file) { alert('워드 파일을 업로드해주세요!'); return }
+              if (!file) { alert('원고 파일을 업로드해주세요!'); return }
+              if (!tocFile) { alert('목차 파일을 업로드해주세요!'); return }
               if (!title) { alert('책 제목을 입력해주세요!'); return }
               if (!author) { alert('저자명을 입력해주세요!'); return }
               setStep(1)
@@ -799,7 +1049,7 @@ function AppPage({ user }) {
                 🎨 디자인 변경
               </button>
               <button onClick={()=>setShowConfirm(true)} disabled={loading} style={{ flex:2, padding:13, background:loading?S.surface:S.accent2, color:'#fff', border:'none', borderRadius:12, fontSize:14, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:loading?'not-allowed':'pointer' }}>
-                {loading ? '⏳ 생성 중...' : '✅ 이 디자인으로 확정 → 5페이지 생성'}
+                {loading ? '⏳ 생성 중...' : '✅ 이 디자인으로 확정 → 전체 페이지 생성'}
               </button>
             </div>
             <button onClick={()=>setStep(1)} style={{ background:'none', border:'none', color:S.textMid, cursor:'pointer', fontSize:13, fontFamily:'Noto Sans KR,sans-serif' }}>
@@ -812,10 +1062,10 @@ function AppPage({ user }) {
                 <div style={{ background:S.white, borderRadius:20, padding:36, width:'100%', maxWidth:400, boxShadow:'0 24px 80px rgba(0,0,0,0.18)', textAlign:'center' }}>
                   <div style={{ fontSize:48, marginBottom:16 }}>⚠️</div>
                   <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:20, fontWeight:900, color:S.accent, marginBottom:10 }}>
-                    5페이지를 생성할까요?
+                    전체 페이지를 생성할까요?
                   </div>
                   <div style={{ fontSize:13, color:S.textMid, lineHeight:1.85, marginBottom:28, wordBreak:'keep-all' }}>
-                    지금 디자인으로 5페이지가 생성됩니다.<br />
+                    지금 디자인으로 전체 페이지가 생성됩니다.<br />
                     <strong style={{ color:'#dc2626' }}>생성 후에는 이 단계로 돌아올 수 없어요.</strong><br />
                     계속 진행하시겠어요?
                   </div>
@@ -837,54 +1087,166 @@ function AppPage({ user }) {
           <div>
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:24 }}>
               <div>
-                <h2 style={{ fontFamily:'Noto Serif KR,serif', fontSize:22, fontWeight:900, color:S.accent, marginBottom:4 }}>5페이지 미리보기</h2>
-                <div style={{ fontSize:12, color:S.textFaint }}>{currentPage+1} / {allPages.length} 페이지</div>
+                <h2 style={{ fontFamily:'Noto Serif KR,serif', fontSize:22, fontWeight:900, color:S.accent, marginBottom:4 }}>
+                  {isPaid ? '✏️ 전체 페이지 수정' : '전체 미리보기'}
+                </h2>
+                <div style={{ fontSize:12, color:S.textFaint }}>
+                  {currentPage+1} / {allPages.length} 페이지
+                  {!isPaid && currentPage >= 1 && <span style={{ color:'#dc2626', fontWeight:700, marginLeft:8 }}>🔒 결제 후 열람 가능</span>}
+                  {isPaid && <span style={{ color:'#16a34a', fontWeight:700, marginLeft:8 }}>✅ 결제 완료</span>}
+                </div>
               </div>
+              {isPaid && (
+                <button onClick={() => setShowDesign(true)} style={{ padding:'7px 14px', background:S.white, color:S.accent, border:`1px solid ${S.border}`, borderRadius:8, fontSize:12, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+                  🎨 디자인 수정
+                </button>
+              )}
             </div>
-            <div style={{ background:S.white, borderRadius:'3px 16px 16px 3px', boxShadow:'0 4px 28px rgba(0,0,0,0.13)', overflow:'hidden', position:'relative', marginBottom:24 }}>
-              <div style={{ position:'absolute', left:0, top:0, bottom:0, width:4, background:'linear-gradient(to right,#bbb,#f0ede8)', zIndex:1 }}></div>
-              <PageRenderer page={allPages[currentPage]} color={color} fontSize={fontSize} lineHeight={lineHeight} font={font} onImageClick={(idx)=>{ setImagePageIdx(idx); setShowImageUpload(true) }} />
+
+            {/* 페이지 렌더링 */}
+            <div style={{ position:'relative', marginBottom:24 }}>
+              <div style={{ background:S.white, borderRadius:'3px 16px 16px 3px', boxShadow:'0 4px 28px rgba(0,0,0,0.13)', overflow:'hidden', position:'relative', filter:(!isPaid && currentPage >= 1) ? 'blur(6px)' : 'none', userSelect:(!isPaid && currentPage >= 1) ? 'none' : 'auto', pointerEvents:(!isPaid && currentPage >= 1) ? 'none' : 'auto', transition:'filter 0.3s' }}>
+                <div style={{ position:'absolute', left:0, top:0, bottom:0, width:4, background:'linear-gradient(to right,#bbb,#f0ede8)', zIndex:1 }}></div>
+                <PageRenderer page={allPages[currentPage]} color={color} fontSize={fontSize} lineHeight={lineHeight} font={font} onImageClick={(idx)=>{ if(isPaid){ setImagePageIdx(idx); setShowImageUpload(true) } }} />
+              </div>
+
+              {/* 블러 오버레이 - 결제 전 2페이지 이후 */}
+              {!isPaid && currentPage >= 1 && (
+                <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', background:'rgba(255,255,255,0.3)', borderRadius:'3px 16px 16px 3px', zIndex:10 }}>
+                  <div style={{ fontSize:40, marginBottom:12 }}>🔒</div>
+                  <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:18, fontWeight:900, color:S.accent, marginBottom:6 }}>결제 후 열람 가능합니다</div>
+                  <div style={{ fontSize:13, color:S.textMid, marginBottom:20 }}>{proofread ? '11,900원' : '9,900원'}으로 전체 페이지를 받아보세요</div>
+                  <button onClick={()=>setCurrentPage(allPages.length-1)} style={{ padding:'12px 28px', background:S.accent2, color:'#fff', border:'none', borderRadius:10, fontSize:14, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+                    💳 지금 결제하기
+                  </button>
+                </div>
+              )}
             </div>
+
+            {/* 페이지 네비 */}
             <div style={{ display:'flex', justifyContent:'center', gap:12, marginBottom:32 }}>
               <button onClick={()=>setCurrentPage(Math.max(0,currentPage-1))} disabled={currentPage===0} style={{ width:44, height:44, background:S.white, border:`1.5px solid ${S.border}`, borderRadius:12, fontSize:20, cursor:'pointer', opacity:currentPage===0?0.3:1, display:'flex', alignItems:'center', justifyContent:'center' }}>‹</button>
               <div style={{ display:'flex', gap:6, alignItems:'center' }}>
-                {allPages.map((_,i) => <div key={i} onClick={()=>setCurrentPage(i)} style={{ width:i===currentPage?18:6, height:6, borderRadius:3, background:i===currentPage?S.accent3:S.border, cursor:'pointer', transition:'all 0.2s' }}></div>)}
+                {allPages.map((_,i) => (
+                  <div key={i} onClick={()=>setCurrentPage(i)} style={{ width:i===currentPage?18:6, height:6, borderRadius:3, background:i===currentPage?S.accent3:(!isPaid&&i>=1)?'#fca5a5':S.border, cursor:'pointer', transition:'all 0.2s' }}></div>
+                ))}
               </div>
               <button onClick={()=>setCurrentPage(Math.min(allPages.length-1,currentPage+1))} disabled={currentPage===allPages.length-1} style={{ width:44, height:44, background:S.white, border:`1.5px solid ${S.border}`, borderRadius:12, fontSize:20, cursor:'pointer', opacity:currentPage===allPages.length-1?0.3:1, display:'flex', alignItems:'center', justifyContent:'center' }}>›</button>
             </div>
-            <div style={{ background:S.accent, borderRadius:20, padding:'32px 28px', textAlign:'center', position:'relative', overflow:'hidden' }}>
-              <div style={{ position:'absolute', top:-40, right:-40, width:160, height:160, background:'rgba(255,255,255,0.05)', borderRadius:'50%' }}></div>
-              <div style={{ fontSize:36, marginBottom:12 }}>🔒</div>
-              <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:20, fontWeight:900, color:'#fff', marginBottom:8 }}>전체 PDF를 받으시겠어요?</div>
-              <div style={{ fontSize:13, color:'rgba(255,255,255,0.7)', marginBottom:20, lineHeight:1.7 }}>지금 결제하면 전체 페이지를<br />고해상도 PDF로 즉시 다운로드할 수 있어요</div>
 
-              {/* 가격 표시 */}
-              <div style={{ background:'rgba(255,255,255,0.1)', borderRadius:12, padding:'16px 20px', marginBottom:16 }}>
-                <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:proofread?8:0 }}>
-                  <div style={{ fontSize:12, color:'rgba(255,255,255,0.6)' }}>전자책 PDF</div>
-                  <div style={{ fontSize:16, fontWeight:700, color:'#fff' }}>9,900원</div>
+            {/* 결제 전: 추가 미리보기 + 페이월 */}
+            {!isPaid && (
+              <>
+                {/* 추가 페이지 타입 미리보기 */}
+                <div style={{ marginBottom:12, fontSize:12, color:'#888', fontWeight:600, letterSpacing:'0.05em', textAlign:'center' }}>결제 후 이런 페이지들도 포함돼요</div>
+                <div style={{ display:'flex', gap:12, marginBottom:28 }}>
+
+                  {/* 목차 */}
+                  <div style={{ flex:1, background:'#faf8f5', borderRadius:'2px 10px 10px 2px', boxShadow:'3px 0 12px rgba(0,0,0,0.1)', overflow:'hidden', position:'relative', opacity:0.85 }}>
+                    <div style={{ position:'absolute', left:0, top:0, bottom:0, width:3, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:1 }}></div>
+                    <div style={{ padding:'12px 10px 10px 16px' }}>
+                      <div style={{ fontSize:7, fontWeight:700, letterSpacing:'0.15em', color:color, marginBottom:5, fontFamily:'Noto Sans KR,sans-serif' }}>CONTENTS</div>
+                      <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:11, fontWeight:900, color:'#111', marginBottom:8 }}>목차</div>
+                      {[['CH 01','첫 번째 챕터','12'],['CH 02','두 번째 챕터','28'],['CH 03','세 번째 챕터','44'],['CH 04','네 번째 챕터','60']].map(([ch,nm,pg],i) => (
+                        <div key={i} style={{ display:'flex', alignItems:'baseline', gap:4, marginBottom:5 }}>
+                          <span style={{ fontSize:7, fontWeight:700, color:color, width:24, flexShrink:0, fontFamily:'Noto Sans KR,sans-serif' }}>{ch}</span>
+                          <span style={{ fontSize:8, color:'#333', flex:1, fontFamily:'Noto Serif KR,serif' }}>{nm}</span>
+                          <span style={{ fontSize:7, color:'#aaa' }}>{pg}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ padding:'4px 10px 6px 16px', borderTop:'0.5px solid #e0ddd8', fontSize:7, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>📋 목차형</div>
+                  </div>
+
+                  {/* 요약본 */}
+                  <div style={{ flex:1, background:'#faf8f5', borderRadius:'2px 10px 10px 2px', boxShadow:'3px 0 12px rgba(0,0,0,0.1)', overflow:'hidden', position:'relative', opacity:0.85 }}>
+                    <div style={{ position:'absolute', left:0, top:0, bottom:0, width:3, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:1 }}></div>
+                    <div style={{ padding:'12px 10px 10px 16px' }}>
+                      <div style={{ display:'flex', justifyContent:'space-between', paddingBottom:5, borderBottom:`0.5px solid #e0ddd8`, marginBottom:8, fontSize:7, color:'#bbb' }}>
+                        <span>{title||'요약'}</span>
+                        <div style={{ width:4, height:4, borderRadius:'50%', background:color }}></div>
+                      </div>
+                      <div style={{ background:`${color}12`, border:`1px solid ${color}30`, borderRadius:4, padding:'6px 8px', marginBottom:6 }}>
+                        <div style={{ fontSize:7.5, fontWeight:700, color:color, marginBottom:4, fontFamily:'Noto Sans KR,sans-serif' }}>핵심 요약</div>
+                        {['핵심 포인트 1','핵심 포인트 2','핵심 포인트 3'].map((t,i) => (
+                          <div key={i} style={{ display:'flex', alignItems:'center', gap:3, marginBottom:3 }}>
+                            <div style={{ width:3, height:3, borderRadius:'50%', background:color, flexShrink:0 }}></div>
+                            <span style={{ fontSize:7.5, color:'#444', fontFamily:'Noto Serif KR,serif' }}>{t}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ fontSize:7.5, lineHeight:1.8, color:'#444', fontFamily:'Noto Serif KR,serif' }}>핵심 내용을 박스로 정리합니다.</div>
+                    </div>
+                    <div style={{ padding:'4px 10px 6px 16px', borderTop:'0.5px solid #e0ddd8', fontSize:7, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>📄 요약본형</div>
+                  </div>
+
+                  {/* 그래프/표형 */}
+                  <div style={{ flex:1, background:'#faf8f5', borderRadius:'2px 10px 10px 2px', boxShadow:'3px 0 12px rgba(0,0,0,0.1)', overflow:'hidden', position:'relative', opacity:0.85 }}>
+                    <div style={{ position:'absolute', left:0, top:0, bottom:0, width:3, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:1 }}></div>
+                    <div style={{ padding:'12px 10px 10px 16px' }}>
+                      <div style={{ display:'flex', justifyContent:'space-between', paddingBottom:5, borderBottom:`0.5px solid #e0ddd8`, marginBottom:8, fontSize:7, color:'#bbb' }}>
+                        <span>{title||'그래프'}</span>
+                        <div style={{ width:4, height:4, borderRadius:'50%', background:color }}></div>
+                      </div>
+                      <div style={{ display:'flex', alignItems:'flex-end', gap:4, height:48, marginBottom:6, padding:'0 4px' }}>
+                        {[60,85,45,90,70].map((h,i) => (
+                          <div key={i} style={{ flex:1, height:`${h}%`, background:color, opacity:0.6+i*0.08, borderRadius:'2px 2px 0 0' }}></div>
+                        ))}
+                      </div>
+                      <div style={{ fontSize:7.5, lineHeight:1.8, color:'#444', fontFamily:'Noto Serif KR,serif' }}>데이터를 그래프로 자동 변환합니다.</div>
+                    </div>
+                    <div style={{ padding:'4px 10px 6px 16px', borderTop:'0.5px solid #e0ddd8', fontSize:7, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>📊 그래프형</div>
+                  </div>
+
                 </div>
-                {proofread && (
-                  <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', paddingTop:8, borderTop:'1px solid rgba(255,255,255,0.1)' }}>
-                    <div style={{ fontSize:12, color:'rgba(255,255,255,0.6)' }}>✍️ 오탈자 교정</div>
-                    <div style={{ fontSize:16, fontWeight:700, color:'#fbbf24' }}>+2,000원</div>
+
+                <div style={{ background:S.accent, borderRadius:20, padding:'32px 28px', textAlign:'center', position:'relative', overflow:'hidden' }}>
+                  <div style={{ position:'absolute', top:-40, right:-40, width:160, height:160, background:'rgba(255,255,255,0.05)', borderRadius:'50%' }}></div>
+                  <div style={{ fontSize:36, marginBottom:12 }}>🔒</div>
+                  <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:20, fontWeight:900, color:'#fff', marginBottom:8 }}>전체 PDF를 받으시겠어요?</div>
+                  <div style={{ fontSize:13, color:'rgba(255,255,255,0.7)', marginBottom:20, lineHeight:1.7 }}>지금 결제하면 전체 페이지를<br />고해상도 PDF로 즉시 다운로드할 수 있어요</div>
+                  <div style={{ background:'rgba(255,255,255,0.1)', borderRadius:12, padding:'16px 20px', marginBottom:16 }}>
+                    <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:proofread?8:0 }}>
+                      <div style={{ fontSize:12, color:'rgba(255,255,255,0.6)' }}>전자책 PDF</div>
+                      <div style={{ fontSize:16, fontWeight:700, color:'#fff' }}>9,900원</div>
+                    </div>
+                    {proofread && (
+                      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', paddingTop:8, borderTop:'1px solid rgba(255,255,255,0.1)' }}>
+                        <div style={{ fontSize:12, color:'rgba(255,255,255,0.6)' }}>✍️ 오탈자 교정</div>
+                        <div style={{ fontSize:16, fontWeight:700, color:'#fbbf24' }}>+2,000원</div>
+                      </div>
+                    )}
+                    <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', paddingTop:12, marginTop:8, borderTop:'1px solid rgba(255,255,255,0.2)' }}>
+                      <div style={{ fontSize:13, fontWeight:700, color:'rgba(255,255,255,0.8)' }}>합계</div>
+                      <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:32, fontWeight:900, color:'#fff' }}>
+                        {proofread ? '11,900원' : '9,900원'}
+                      </div>
+                    </div>
                   </div>
-                )}
-                <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', paddingTop:12, marginTop:8, borderTop:'1px solid rgba(255,255,255,0.2)' }}>
-                  <div style={{ fontSize:13, fontWeight:700, color:'rgba(255,255,255,0.8)' }}>합계</div>
-                  <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:32, fontWeight:900, color:'#fff' }}>
-                    {proofread ? '11,900원' : '9,900원'}
-                  </div>
+                  <button onClick={()=>setIsPaid(true)} style={{ width:'100%', padding:16, background:S.accent2, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+                    💳 지금 결제하고 전체 받기
+                  </button>
+                  <div style={{ fontSize:11, color:'rgba(255,255,255,0.4)', marginTop:10 }}>포트원 · 카드 결제 가능</div>
+                </div>
+              </>
+            )}
+
+            {/* 결제 후: 수정 + 다운로드 */}
+            {isPaid && (
+              <div style={{ background:'#f0fdf4', border:'1.5px solid #16a34a', borderRadius:20, padding:'28px', textAlign:'center' }}>
+                <div style={{ fontSize:32, marginBottom:8 }}>✅</div>
+                <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:18, fontWeight:900, color:'#15803d', marginBottom:6 }}>결제 완료! 전체 페이지가 열렸어요</div>
+                <div style={{ fontSize:13, color:'#166534', marginBottom:20 }}>디자인을 수정하거나 PDF로 다운로드하세요.</div>
+                <div style={{ display:'flex', gap:10 }}>
+                  <button onClick={()=>setShowDesign(true)} style={{ flex:1, padding:13, background:'#fff', color:S.accent, border:`1.5px solid ${S.accent}`, borderRadius:12, fontSize:14, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+                    🎨 디자인 수정
+                  </button>
+                  <button onClick={()=>downloadPDF(allPages, title, color)} style={{ flex:1, padding:13, background:S.accent2, color:'#fff', border:'none', borderRadius:12, fontSize:14, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+                    ⬇ PDF 다운로드
+                  </button>
                 </div>
               </div>
-
-              <div>
-                <button style={{ width:'100%', padding:16, background:S.accent2, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
-                  💳 지금 결제하고 전체 받기
-                </button>
-                <div style={{ fontSize:11, color:'rgba(255,255,255,0.4)', marginTop:10 }}>포트원 · 카드 결제 가능</div>
-              </div>
-            </div>
+            )}
           </div>
         )}
       </div>
@@ -1059,6 +1421,26 @@ function DesignPanel({ S, colors, fonts, color, setColor, font, setFont, fontSiz
 
 function PageRenderer({ page, color, fontSize=12, lineHeight=2.1, font='Noto Serif KR', onImageClick }) {
   if (!page) return null
+  if (page.type === 'toc') {
+    return (
+      <div style={{ padding:'24px 32px 20px 40px', fontFamily:'Noto Sans KR,sans-serif' }}>
+        <div style={{ fontSize:9, fontWeight:700, letterSpacing:'0.2em', color:color, marginBottom:12, fontFamily:'Noto Sans KR,sans-serif' }}>CONTENTS</div>
+        <div style={{ fontFamily:`${font},serif`, fontSize:22, fontWeight:900, color:'#111', marginBottom:6 }}>목차</div>
+        <div style={{ height:2, background:color, width:40, marginBottom:20, opacity:0.4 }}></div>
+        {(page.sections||[]).filter(s=>s.t==='toc-item').map((s,i) => (
+          <div key={i} style={{ display:'flex', alignItems:'baseline', gap:8, marginBottom:14 }}>
+            <span style={{ fontSize:9, fontWeight:700, color:color, width:36, flexShrink:0, letterSpacing:'0.1em', fontFamily:'Noto Sans KR,sans-serif' }}>{s.ch}</span>
+            <span style={{ fontFamily:`${font},serif`, fontSize:13, color:'#222', flex:1 }}>{s.name}</span>
+            <div style={{ flex:1, borderBottom:'1px dotted #ddd', margin:'0 8px 3px' }}></div>
+            <span style={{ fontSize:11, color:'#aaa', fontFamily:`${font},serif` }}>{s.pg}</span>
+          </div>
+        ))}
+        <div style={{ marginTop:16, paddingTop:10, borderTop:'0.5px solid #e0ddd8', display:'flex', justifyContent:'space-between', fontSize:10, color:'#bbb', fontFamily:`${font},serif` }}>
+          <span>{page.pn}</span><span>{page.rh}</span>
+        </div>
+      </div>
+    )
+  }
   if (page.type === 'chapter') {
     return (
       <div style={{ fontFamily:'Noto Sans KR,sans-serif' }}>
