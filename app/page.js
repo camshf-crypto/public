@@ -144,14 +144,6 @@ function LandingPage() {
   const S = { bg:'#f7f5f2', white:'#fff', surface:'#f0ede8', border:'#e2ddd8', accent:'#1a1a2e', accent2:'#c8963e', accent3:'#2563eb', text:'#1a1a1a', textMid:'#666', textFaint:'#aaa' }
 
   async function handleAuth() {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'signup_button_click', {
-      event_category: 'engagement',
-      event_label: isSignup ? '회원가입' : '로그인'
-    })
-  }
-  alert('지금은 수요 조사 중입니다.\n저희 서비스를 이용해주셔서 감사합니다.\n출시 일정이 잡히면 인스타에서 뵙겠습니다 🙏')
-  return
     setAuthLoading(true)
     setError('')
     try {
@@ -205,14 +197,11 @@ function LandingPage() {
             <a href="#features" style={{ fontSize:13, color:S.textMid, textDecoration:'none', fontWeight:500 }}>기능</a>
           </nav>
           <button onClick={() => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'cta_button_click', {
-      event_category: 'engagement',
-      event_label: '무료로 시작하기'
-    })
-  }
-  setShowLogin(true)
-}} style={{ padding:'9px 20px', background:S.accent, color:'#fff', border:'none', borderRadius:8, fontSize:13, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+            if (typeof window !== 'undefined' && window.gtag) {
+              window.gtag('event', 'start_button_click', { event_category: 'engagement', event_label: '무료로 시작하기' })
+            }
+            setShowLogin(true)
+          }} style={{ padding:'9px 20px', background:S.accent, color:'#fff', border:'none', borderRadius:8, fontSize:13, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
             무료로 시작하기
           </button>
         </div>
@@ -225,26 +214,23 @@ function LandingPage() {
             AI 책 내지 디자인 플랫폼
           </div>
           <h1 className="hero-title" style={{ fontFamily:'Noto Serif KR,serif', fontSize:'clamp(40px,5.5vw,76px)', fontWeight:900, lineHeight:1.15, letterSpacing:'-0.03em', color:S.accent, marginBottom:22, wordBreak:'keep-all' }}>
-            워드 파일 하나로<br /><span style={{ color:S.accent2 }}>전자책</span>이 완성됩니다
+            워드 파일 하나로<br /><span style={{ color:S.accent2 }}>책 한 권</span>이 완성됩니다
           </h1>
           <p style={{ fontSize:17, color:S.textMid, lineHeight:1.85, fontWeight:300, marginBottom:44, wordBreak:'keep-all', maxWidth:540, margin:'0 auto 44px' }}>
             디자이너 없이, 30분 안에.<br />텍스트를 넣으면 AI가 레이아웃·폰트·여백을 자동으로 잡아줍니다.
           </p>
           <div style={{ display:'flex', gap:12, justifyContent:'center', marginBottom:52 }}>
             <button onClick={() => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'cta_button_click', {
-      event_category: 'engagement',
-      event_label: '무료로 시작하기'
-    })
-  }
-  setShowLogin(true)
-}} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+              if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'start_button_click', { event_category: 'engagement', event_label: '지금 무료로 시작하기' })
+              }
+              setShowLogin(true)
+            }} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
               지금 무료로 시작하기 →
             </button>
           </div>
           <div style={{ display:'flex', gap:32, justifyContent:'center', alignItems:'center' }}>
-            {[['30분','100페이지 완성'],['95%','비용 절감'],['9900원','책 한 권 완성']].map(([num,lbl],i) => (
+            {[['30분','200페이지 완성'],['95%','비용 절감'],['10만원','책 한 권 완성']].map(([num,lbl],i) => (
               <div key={i} style={{ display:'flex', alignItems:'center', gap:32 }}>
                 {i > 0 && <div style={{ width:1, height:32, background:S.border }}></div>}
                 <div style={{ textAlign:'center' }}>
@@ -256,20 +242,65 @@ function LandingPage() {
           </div>
         </div>
 
-        <div style={{ background:'#e8e4df', padding:'52px 0 60px', overflow:'hidden', position:'relative' }}>
-          <div style={{ textAlign:'center', marginBottom:32, position:'relative', zIndex:1 }}>
-            <div style={{ fontSize:11, fontWeight:700, letterSpacing:'0.2em', color:'#666', textTransform:'uppercase' }}>SAMPLE PAGES</div>
+        <div style={{ background:'#e8e4df', padding:'64px 24px', overflow:'hidden' }}>
+          <div style={{ textAlign:'center', marginBottom:12 }}>
+            <div style={{ fontSize:11, fontWeight:700, letterSpacing:'0.2em', color:'#888', textTransform:'uppercase', marginBottom:8 }}>BEFORE / AFTER</div>
+            <div style={{ fontFamily:'Noto Serif KR,serif', fontSize:22, fontWeight:900, color:'#1a1a2e', marginBottom:4 }}>워드 파일 그대로 올리면</div>
+            <div style={{ fontSize:14, color:'#666' }}>AI가 전문 디자인으로 완성해드려요</div>
           </div>
-          <div style={{ position:'relative', zIndex:1, display:'flex', flexDirection:'column', gap:14 }}>
-            <div style={{ display:'flex', gap:14, animation:'scrollRight 35s linear infinite', width:'max-content' }}>
-              {[...SAMPLE_BOOKS,...SAMPLE_BOOKS].map((b,i) => <MiniBookCard key={i} book={b} />)}
+          <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:32, flexWrap:'wrap', marginTop:40 }}>
+
+            {/* 왼쪽: 워드 */}
+            <div>
+              <div style={{ width:280, background:'#fff', border:'1px solid #ddd', borderRadius:4, padding:'32px 26px', boxShadow:'2px 4px 12px rgba(0,0,0,0.1)' }}>
+                <div style={{ fontSize:14, color:'#111', fontFamily:'Noto Sans KR,sans-serif', lineHeight:2.2, wordBreak:'keep-all' }}>
+                  CHAPTER 01<br/>
+                  작은 것이 쌓이면<br/>
+                  <br/>
+                  매일 1%씩 나아지면 1년 후 37배가 된다. 습관은 복리로 작동한다.<br/>
+                  <br/>
+                  "성공은 매일의 작은 노력이 쌓인 결과다. 드라마틱한 변화는 없다."<br/>
+                  <br/>
+                  문제는 습관의 효과가 즉각적으로 나타나지 않는다는 점이다.
+                </div>
+              </div>
+              <div style={{ textAlign:'center', fontSize:11, color:'#999', marginTop:10, fontWeight:600 }}>워드 파일</div>
             </div>
-            <div style={{ display:'flex', gap:14, animation:'scrollLeft 35s linear infinite', width:'max-content' }}>
-              {[...SAMPLE_BOOKS.slice().reverse(),...SAMPLE_BOOKS.slice().reverse()].map((b,i) => <MiniBookCard key={i} book={b} />)}
+
+            {/* 화살표 */}
+            <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:8 }}>
+              <div style={{ fontSize:11, color:'#888', marginBottom:4 }}>AI 자동 디자인</div>
+              <div style={{ display:'flex', alignItems:'center', gap:0 }}>
+                <div style={{ width:56, height:2, background:'linear-gradient(to right,#bbb,#c8963e)' }}></div>
+                <div style={{ color:'#c8963e', fontSize:16, marginLeft:-1 }}>▶</div>
+              </div>
+              <div style={{ fontSize:12, color:'#c8963e', fontWeight:700 }}>9,900원</div>
             </div>
+
+            {/* 오른쪽: 북메이커 결과물 */}
+            <div>
+              <div style={{ width:280, background:'#faf8f5', borderRadius:'3px 12px 12px 3px', boxShadow:'6px 0 24px rgba(0,0,0,0.15)', overflow:'hidden', position:'relative' }}>
+                <div style={{ position:'absolute', left:0, top:0, bottom:0, width:4, background:'linear-gradient(to right,#999,#e8e4df)', zIndex:2 }}></div>
+                <div style={{ height:148, background:'#2563eb', position:'relative', overflow:'hidden' }}>
+                  <div style={{ position:'absolute', bottom:-1, left:0, right:0, height:24, background:'#faf8f5', clipPath:'ellipse(55% 100% at 50% 100%)' }}></div>
+                  <div style={{ position:'absolute', top:18, left:28, fontSize:9, fontWeight:700, letterSpacing:'0.2em', color:'#c8963e', fontFamily:'Noto Sans KR,sans-serif' }}>CHAPTER 01</div>
+                  <div style={{ position:'absolute', top:36, left:28, right:20, fontFamily:'Noto Serif KR,serif', fontSize:22, fontWeight:900, color:'#fff', lineHeight:1.3 }}>작은 것이<br/>쌓이면</div>
+                </div>
+                <div style={{ padding:'16px 20px 12px 28px' }}>
+                  <p style={{ fontSize:13, lineHeight:2.1, color:'#444', marginBottom:8, wordBreak:'keep-all', fontFamily:'Noto Serif KR,serif' }}>매일 1%씩 나아지면 1년 후 37배가 된다. 습관은 복리로 작동한다.</p>
+                  <div style={{ borderLeft:'3px solid #2563eb', background:'rgba(37,99,235,0.06)', padding:'8px 12px', borderRadius:'0 4px 4px 0', marginBottom:8 }}>
+                    <p style={{ fontSize:12, lineHeight:1.9, color:'#333', fontStyle:'italic', margin:0 }}>"성공은 매일의 작은 노력이 쌓인 결과다. 드라마틱한 변화는 없다."</p>
+                  </div>
+                  <p style={{ fontSize:13, lineHeight:2.1, color:'#444', fontFamily:'Noto Serif KR,serif' }}>문제는 습관의 효과가 즉각적으로 나타나지 않는다는 점이다.</p>
+                </div>
+                <div style={{ padding:'6px 20px 12px 28px', borderTop:'0.5px solid #e0ddd8', display:'flex', justifyContent:'space-between', fontSize:9, color:'#bbb', fontFamily:'Noto Serif KR,serif' }}>
+                  <span>12</span><span>1%의 습관이 삶을 바꾼다</span>
+                </div>
+              </div>
+              <div style={{ textAlign:'center', fontSize:11, color:'#c8963e', marginTop:10, fontWeight:700 }}>북메이커 완성본</div>
+            </div>
+
           </div>
-          <div style={{ position:'absolute', left:0, top:0, bottom:0, width:120, background:'linear-gradient(to right,#e8e4df,transparent)', zIndex:2, pointerEvents:'none' }}></div>
-          <div style={{ position:'absolute', right:0, top:0, bottom:0, width:120, background:'linear-gradient(to left,#e8e4df,transparent)', zIndex:2, pointerEvents:'none' }}></div>
         </div>
       </div>
 
@@ -319,15 +350,7 @@ function LandingPage() {
           첫 5페이지는<br />무료입니다
         </h2>
         <p style={{ fontSize:15, color:S.textMid, marginBottom:32, fontWeight:300 }}>회원가입 후 바로 사용해보세요. 카드 정보 불필요.</p>
-        <button onClick={() => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'cta_button_click', {
-      event_category: 'engagement',
-      event_label: '무료로 시작하기'
-    })
-  }
-  setShowLogin(true)
-}} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+        <button onClick={() => setShowLogin(true)} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
           무료로 시작하기 →
         </button>
       </div>
