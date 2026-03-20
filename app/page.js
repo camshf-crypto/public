@@ -144,6 +144,15 @@ function LandingPage() {
   const S = { bg:'#f7f5f2', white:'#fff', surface:'#f0ede8', border:'#e2ddd8', accent:'#1a1a2e', accent2:'#c8963e', accent3:'#2563eb', text:'#1a1a1a', textMid:'#666', textFaint:'#aaa' }
 
   async function handleAuth() {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'signup_button_click', {
+      event_category: 'engagement',
+      event_label: isSignup ? '회원가입' : '로그인'
+    })
+  }
+  alert('지금은 수요 조사 중입니다.\n저희 서비스를 이용해주셔서 감사합니다.\n출시 일정이 잡히면 인스타에서 뵙겠습니다 🙏')
+  return
+  setAuthLoading(true)   
     setAuthLoading(true)
     setError('')
     try {
@@ -350,7 +359,15 @@ function LandingPage() {
           첫 5페이지는<br />무료입니다
         </h2>
         <p style={{ fontSize:15, color:S.textMid, marginBottom:32, fontWeight:300 }}>회원가입 후 바로 사용해보세요. 카드 정보 불필요.</p>
-        <button onClick={() => setShowLogin(true)} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+        <button onClick={() => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'start_button_click', {
+      event_category: 'engagement',
+      event_label: '무료로 시작하기'
+    })
+  }
+  setShowLogin(true)
+}} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
           무료로 시작하기 →
         </button>
       </div>
