@@ -204,7 +204,15 @@ function LandingPage() {
             <a href="#how" style={{ fontSize:13, color:S.textMid, textDecoration:'none', fontWeight:500 }}>작동방식</a>
             <a href="#features" style={{ fontSize:13, color:S.textMid, textDecoration:'none', fontWeight:500 }}>기능</a>
           </nav>
-          <button onClick={() => setShowLogin(true)} style={{ padding:'9px 20px', background:S.accent, color:'#fff', border:'none', borderRadius:8, fontSize:13, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+          <button onClick={() => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'cta_button_click', {
+      event_category: 'engagement',
+      event_label: '무료로 시작하기'
+    })
+  }
+  setShowLogin(true)
+}} style={{ padding:'9px 20px', background:S.accent, color:'#fff', border:'none', borderRadius:8, fontSize:13, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
             무료로 시작하기
           </button>
         </div>
@@ -223,7 +231,15 @@ function LandingPage() {
             디자이너 없이, 30분 안에.<br />텍스트를 넣으면 AI가 레이아웃·폰트·여백을 자동으로 잡아줍니다.
           </p>
           <div style={{ display:'flex', gap:12, justifyContent:'center', marginBottom:52 }}>
-            <button onClick={() => setShowLogin(true)} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+            <button onClick={() => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'cta_button_click', {
+      event_category: 'engagement',
+      event_label: '무료로 시작하기'
+    })
+  }
+  setShowLogin(true)
+}} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
               지금 무료로 시작하기 →
             </button>
           </div>
@@ -303,7 +319,15 @@ function LandingPage() {
           첫 5페이지는<br />무료입니다
         </h2>
         <p style={{ fontSize:15, color:S.textMid, marginBottom:32, fontWeight:300 }}>회원가입 후 바로 사용해보세요. 카드 정보 불필요.</p>
-        <button onClick={() => setShowLogin(true)} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
+        <button onClick={() => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'cta_button_click', {
+      event_category: 'engagement',
+      event_label: '무료로 시작하기'
+    })
+  }
+  setShowLogin(true)
+}} style={{ padding:'15px 40px', background:S.accent, color:'#fff', border:'none', borderRadius:12, fontSize:15, fontWeight:700, fontFamily:'Noto Sans KR,sans-serif', cursor:'pointer' }}>
           무료로 시작하기 →
         </button>
       </div>
