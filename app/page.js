@@ -129,7 +129,8 @@ export default function Home() {
   )
 
   if (user) return <AppPage user={user} />
-  return <LandingPage />
+return <AppPage user={{ email: 'test@test.com' }} />
+// return <LandingPage />
 }
 
 function LandingPage() {
@@ -238,7 +239,7 @@ function LandingPage() {
             </button>
           </div>
           <div style={{ display:'flex', gap:32, justifyContent:'center', alignItems:'center' }}>
-            {[['30분','200페이지 완성'],['95%','비용 절감'],['10만원','책 한 권 완성']].map(([num,lbl],i) => (
+            {[['30분','200페이지 완성'],['95%','비용 절감'],['9,900원','책 한 권 완성']].map(([num,lbl],i) => (
               <div key={i} style={{ display:'flex', alignItems:'center', gap:32 }}>
                 {i > 0 && <div style={{ width:1, height:32, background:S.border }}></div>}
                 <div style={{ textAlign:'center' }}>
@@ -654,7 +655,6 @@ function AppPage({ user }) {
     if (isRegen && regenCount <= 0) return
     setLoading(true)
     try {
-      throw new Error('API 미연동')
       const res = await fetch('/api/generate', {
         method:'POST',
         headers:{'Content-Type':'application/json'},
@@ -724,7 +724,7 @@ function AppPage({ user }) {
       const res = await fetch('/api/generate', {
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ text: rawText || '샘플 텍스트', title, author, color, genre: genre?.id })
+        body: JSON.stringify({ text: rawText || '샘플 텍스트', title, author, color, genre: genre?.id, tocText })
       })
       const data = await res.json()
       if (data.error) throw new Error(data.error)
