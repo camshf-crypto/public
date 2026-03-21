@@ -129,8 +129,7 @@ export default function Home() {
   )
 
   if (user) return <AppPage user={user} />
-return <AppPage user={{ email: 'test@test.com' }} />
-// return <LandingPage />
+  return <LandingPage />
 }
 
 function LandingPage() {
